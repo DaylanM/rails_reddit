@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # http verb - how the browser communicates the crud actions
-  Create -> POST
-  Read -> GET
-  Update -> PUT / PATCH
-  Destroy -> DELETE
+  # Create -> POST
+  # Read -> GET
+  # Update -> PUT / PATCH
+  # Destroy -> DELETE
 
   # rails this file does navigation
   # rails with react, lead us somewhere in our controller
@@ -30,32 +30,34 @@ Rails.application.routes.draw do
 
 
   namespace :api do
-    resouces :subs
+    resources :subs do
+      resources :topics
+    end
   end
 
   # if there is another model and is a child of this model then the routes would be embedded routes
 
-  #   resouces :parent(s) do
-  #     resouces :child(s)
+  #   resources :parent(s) do
+  #     resources :child(s)
   #   end
 
   # only two levels deep, any more will be too complicated
 
   ### don't do this
-  #   resouces :parent(s) do
-  #     resouces :child(s)
+  #   resources :parent(s) do
+  #     resources :child(s)
   #       resources :grandchild(s)
-  #         resouces :grandgrandchild(s)
+  #         resources :grandgrandchild(s)
   #   end
 
 
-  #   resouces :parent(s) do
-  #     resouces :child(s)
+  #   resources :parent(s) do
+  #     resources :child(s)
   #   end
 
   # this creates duplicate routes for the child
-  #   resouces :child(s) except : [:index, :show, :create, :update, :destroy] do
-  #     resouces :grandchild(s)
+  #   resources :child(s) except : [:index, :show, :create, :update, :destroy] do
+  #     resources :grandchild(s)
   #   end
 
 
