@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   # delete '/subs/', to: 'subs#destroy'
 
   # resources :controller(s)
-  resources :controller :subs, only: [:show, :create]
-  resources :controller :subs, except: [:index, :update]
+  # resources :controller :subs, only: [:show, :create]
+  # resources :controller :subs, except: [:index, :update]
 
 
   namespace :api do
@@ -47,6 +47,18 @@ Rails.application.routes.draw do
   #       resources :grandchild(s)
   #         resouces :grandgrandchild(s)
   #   end
+
+
+  #   resouces :parent(s) do
+  #     resouces :child(s)
+  #   end
+
+  # this creates duplicate routes for the child
+  #   resouces :child(s) except : [:index, :show, :create, :update, :destroy] do
+  #     resouces :grandchild(s)
+  #   end
+
+
 
 
 
